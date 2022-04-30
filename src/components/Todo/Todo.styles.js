@@ -3,14 +3,17 @@ import styled from 'styled-components'
 export const Main = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+`
+
+export const Head = styled.div`
+    display: flex;
 `
 
 export const Container = styled.div`
     border: 1px solid gray;
     border-radius: 7px;
-    padding: 10px 10px;
-    width: 300px;
+    padding: 12px 12px;
     display: flex;
     justify-content: space-between;
 `
@@ -43,26 +46,4 @@ export const Button = styled.button`
 
 export const TaskBlock = styled.div`
     margin-top: 70px;
-`
-
-export const Task = styled.div` 
-    font-weight: 100;
-    font-size: 40px;
-    width: 500px;
-    margin-top: 10px;
-    padding: 15px 30px;
-    background-color: #FAFAFB;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    word-break: break-all;
-`
-
-export const TaskInput = styled(Input)`
-    background-color: #FAFAFB;
-`
-
-export const ActionButton = styled(Button)`
-    font-size: 20px;
-    width: 60px;
 `

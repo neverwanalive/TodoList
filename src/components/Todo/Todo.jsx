@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
-import { Task, Container, Main, Input, Button, ActionButton, TaskBlock, TaskInput } from "./Todo.styles";
+
+import { Dropdown } from "../Dropdown"
+import { Main, Head, Container, Input, Button, TaskBlock } from "./Todo.styles";
+import { Task } from "../Task/Task";
 
 export const Todo = () => {
     const [list, changeList] = useState([])
     const [inputValue, setInputValue] = useState('')
+    const [activeItem, changeActiveItem] = useState('All')
     const handleAdd = () => {
         if(inputValue) {
             changeList((currList) => {
@@ -25,7 +29,7 @@ export const Todo = () => {
             
         })
     }
-    const handleChange = (item) => {
+    const handleOnEdit = (item) => {
         changeList((currList) => {
             return currList.map((_item) => {
                 if(_item.id === item.id) {
@@ -45,19 +49,52 @@ export const Todo = () => {
             })
         })
     }
+    const handleOnDone = (item) => {
+        changeList((currList) => {
+            return currList.map((_item) => {
+                if(_item.id === item.id) {
+                    return {..._item, done: !_item.done}
+                }
+                return _item
+            })
+        })
+    }
+    
+    const onChangeActiveItem = (activeItem) => {
+        changeActiveItem (activeItem)
+    }
+
+    const getFilteredList = () => {
+        switch (activeItem) {
+            case 'All':
+                return list
+            case 'Done':
+                return list.filter((item) => item.done)
+            case 'In progress':
+                return list.filter((item) => !item.done)
+            default:
+                return list
+        }
+    }
+
     return (
         <Main>
-            <Container>
-                <Input type="text" onChange={handleInputChange} value={inputValue}/>
-                <Button onClick={handleAdd}>+</Button>
-            </Container>
+            <Head>
+                <Container>
+                    <Input type="text" onChange={handleInputChange} value={inputValue}/>
+                    <Button onClick={handleAdd}>+</Button>
+                </Container>
+                <Dropdown cb={onChangeActiveItem}/>
+            </Head>
             <TaskBlock>
-                {list.map(item =>
-                    <Task>
-                        <TaskInput type="text" onChange={handleTaskChange.bind(this, item)} value={item.name} disabled={!item.isEditing}/>
-                        <Button onClick={handleDelete.bind(this, item)}>-</Button>
-                        <ActionButton onClick={handleChange.bind(this, item)}>{!item.isEditing ? "Edit" : "Save"}</ActionButton>
-                    </Task>
+                {getFilteredList().map((item) =>
+                    <Task 
+                        item={item}
+                        handleTaskChange={handleTaskChange}
+                        handleDelete={handleDelete}
+                        handleOnEdit={handleOnEdit}
+                        handleOnDone={handleOnDone}
+                    />
                 )}
             </TaskBlock>    
         </Main>
