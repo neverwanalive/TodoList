@@ -5,9 +5,10 @@ import { Input, Button } from '../Todo/Todo.styles'
 export const Container = styled.div` 
     font-weight: 100;
     font-size: 40px;
-    width: 390px;
+    width: 640px;
     margin-top: 10px;
     padding: 15px 30px;
+    border-radius: 7px;
     background-color: #FAFAFB;
     display: flex;
     justify-content: space-between;
@@ -21,7 +22,7 @@ export const TaskInput = styled(Input)`
 
 export const ActionButton = styled(Button)`
     font-size: 15px;
-    width: 50px;
+    width: 70px;
 `
 
 export const DoneButton = styled(Button)`

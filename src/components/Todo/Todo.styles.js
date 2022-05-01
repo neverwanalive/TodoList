@@ -1,13 +1,21 @@
 import styled from 'styled-components'
 
+
 export const Main = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 `
 
+export const Title = styled.div`
+    font-size: 70px;
+    color: #fff;
+    margin-left: 215px;
+`
+
 export const Head = styled.div`
     display: flex;
+    margin-top: 50px;
 `
 
 export const Container = styled.div`
@@ -23,7 +31,9 @@ export const Input = styled.input`
     font-size: 30px;
     font-weight: 100;
     width: 70%;
-    border: none;
+    border: 0px;
+    box-shadow: none;
+    border-radius: 7px;
     &:focus {
         outline: none;
     }
@@ -35,15 +45,13 @@ export const Button = styled.button`
     height: 40px;
     margin-left: 15px;
     border: none;
+    border-radius: 7px;
     color: white;
-    background-color: #8BC34A;
+    background-color: #4B4B4B;
     text-align: center;
     cursor: pointer;
-    &:hover {
-        border: 1px solid gray;
-    }
 `
 
 export const TaskBlock = styled.div`
-    margin-top: 70px;
+    margin-top: 160px;
 `

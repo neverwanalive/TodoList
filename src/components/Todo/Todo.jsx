@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { nanoid } from "nanoid";
 
 import { Dropdown } from "../Dropdown"
-import { Main, Head, Container, Input, Button, TaskBlock } from "./Todo.styles";
+import { Main, Title, Head, Container, Input, Button, TaskBlock } from "./Todo.styles";
 import { Task } from "../Task/Task";
 
 export const Todo = () => {
@@ -79,6 +79,7 @@ export const Todo = () => {
 
     return (
         <Main>
+            <Title>Todo List</Title>
             <Head>
                 <Container>
                     <Input type="text" onChange={handleInputChange} value={inputValue}/>
@@ -94,6 +95,7 @@ export const Todo = () => {
                         handleDelete={handleDelete}
                         handleOnEdit={handleOnEdit}
                         handleOnDone={handleOnDone}
+                        key={item.id}
                     />
                 )}
             </TaskBlock>    
