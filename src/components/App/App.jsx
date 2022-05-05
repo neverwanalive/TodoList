@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Todo } from '../Todo';
-import { Main } from './App.styles'
+import { Todo } from '../Todo/Todo';
+import { Container } from './App.styles'
 
 export const App = () => {
   return (
-    <Main>
+    <Container>
       <Todo />
-    </Main>
+    </Container>
   );
 }

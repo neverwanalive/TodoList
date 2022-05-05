@@ -2,22 +2,19 @@ import React, { useState, useEffect } from "react";
 
 import { Container, Block, ItemBlock } from "./Dropdown.styles"
 
-export const Dropdown = ({ cb }) => {
+export const Dropdown = ({ onChange, columns, task}) => {
     const [isVisible, changeVisability] = useState(false)
-    const list = ['All', "In progress", "Done"]
-    const [activeItem, setActiveItem] = useState(list[0])
     const Items = () => {
-        return list.map((item) => <ItemBlock onClick={handleActiveItem.bind(this, item)} b={item === activeItem} key={item}>{item}</ItemBlock>)    
+        return columns.filter((column) => column.id !== task.columnId).map((column) => <ItemBlock onClick={handleActiveItem.bind(this, column.id)} key={column.id}>{column.name}</ItemBlock>)    
     }
 
     const handleVisability = (e) => {
         e.stopPropagation()
         changeVisability((currVisability) => !currVisability)
     }
-    const handleActiveItem = (item) => {
-        setActiveItem(item)
+    const handleActiveItem = (columnId) => {
         changeVisability(false)
-        cb(item)
+        onChange(columnId)
     }
     const offVisability = () => {
         changeVisability(false)
@@ -30,7 +27,7 @@ export const Dropdown = ({ cb }) => {
     }, [])
     return (
         <Container  onClick={handleVisability} c={isVisible}>
-            {activeItem}
+            Move
             <Block onClick={(e) => e.stopPropagation()}>{isVisible && <Items/>}</Block>
         </Container>
     )

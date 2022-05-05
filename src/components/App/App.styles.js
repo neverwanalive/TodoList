@@ -2,10 +2,8 @@ import styled from 'styled-components'
 
 import background from '../../assets/background.jpg'
 
-export const Main = styled.div`
-    display: flex;
-    justify-content: center;
+export const Container = styled.div`
     background-image: url(${background});
-    height: 100vh;
     margin: -8px;
+    padding: 0 50px;
 `

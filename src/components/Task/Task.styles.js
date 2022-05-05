@@ -1,14 +1,16 @@
 import styled from "styled-components"
 
-import { Input, Button } from '../Todo/Todo.styles'
+import { InputBlock, Button } from '../Input/Input.styles'
 
 export const Container = styled.div` 
     font-weight: 100;
-    font-size: 40px;
-    width: 640px;
+    font-size: 20px;
+    width: 248px;
+    height: 28px;
     margin-top: 10px;
-    padding: 15px 30px;
-    border-radius: 7px;
+    padding: 7px 7px;
+    border-radius: 3px;
+    border: 1px solid #4b4b4b;
     background-color: #FAFAFB;
     display: flex;
     justify-content: space-between;
@@ -16,16 +18,16 @@ export const Container = styled.div`
     word-break: break-all;
 `
 
-export const TaskInput = styled(Input)`
+export const TaskInput = styled(InputBlock)`
+width:50%;
+word-break: break-all;
     background-color: #FAFAFB;
+    color: #4B4B4B;
+    &:focus {
+        color:black;
+    }
 `
 
 export const ActionButton = styled(Button)`
-    font-size: 15px;
-    width: 70px;
-`
-
-export const DoneButton = styled(Button)`
-    font-size: 15px;
-    width: 90px;
+    width: 40px;
 `

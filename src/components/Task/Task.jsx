@@ -1,15 +1,52 @@
 import React from "react";
 
-import { Container, TaskInput, ActionButton, DoneButton } from './Task.styles'
-import { Button } from "../Todo/Todo.styles";
+import { Container, TaskInput, ActionButton} from './Task.styles'
+import { Button } from "../Input/Input.styles";
+import { Dropdown } from "../Dropdown";
 
-export const Task = ({ item, handleTaskChange, handleDelete, handleOnEdit, handleOnDone }) => {
+export const Task = ({ task, changeList, columns }) => {
+    const handleDelete = () => {
+        changeList((currList) => {
+            return currList.filter((_task) => _task.id !== task.id)
+            
+        })
+    }
+    const handleOnEdit = () => {
+        changeList((currList) => {
+            return currList.map((_task) => {
+                if(_task.id === task.id) {
+                    return {..._task, isEditing: !_task.isEditing }
+                } 
+                return _task
+            })
+        })
+    }
+    const handleTaskChange = (e) => {
+        changeList((currList) => {
+            return currList.map((_task) => {
+                if(_task.id === task.id) {
+                    return {..._task, name: e.target.value }
+                } 
+                return _task
+            })
+        })
+    }
+    const handleOnDropdownChange = (columnId) => {
+        changeList((currList) => {
+            return currList.map((_task) => {
+                if(_task.id === task.id) {
+                    return {..._task, columnId}
+                }
+                return _task
+            })
+        })
+    }
     return (
         <Container>
-            <TaskInput  type="text" onChange={handleTaskChange.bind(this, item)} value={item.name} disabled={!item.isEditing}/>
-            <Button onClick={handleDelete.bind(this, item)}>-</Button>
-            <ActionButton onClick={handleOnEdit.bind(this, item)}>{!item.isEditing ? "Edit" : "Save"}</ActionButton>
-            <DoneButton  onClick={handleOnDone.bind(this, item)}>{!item.done ? "DONE" : "UNDO"}</DoneButton>
+            <TaskInput  type="text" onChange={handleTaskChange} value={task.name} disabled={!task.isEditing}/>
+            <Button onClick={handleDelete}>-</Button>
+            <ActionButton onClick={handleOnEdit}>{!task.isEditing ? "Edit" : "Save"}</ActionButton>
+            <Dropdown columns={columns} onChange={handleOnDropdownChange} task={task}/>
         </Container>
     )
 }
