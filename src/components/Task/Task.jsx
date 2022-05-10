@@ -1,10 +1,15 @@
 import React from "react";
+import { useDrag } from "react-dnd";
 
 import { Container, TaskInput, ActionButton} from './Task.styles'
 import { Button } from "../Input/Input.styles";
 import { Dropdown } from "../Dropdown";
 
-export const Task = ({ task, changeList, columns }) => {
+export const Task = ({ task, changeList, columns, changeTaskColumnId }) => {
+    const [collectedDrag, dragRef] = useDrag(() => ({
+        type: 'task',
+        item: task
+    }))
     const handleDelete = () => {
         changeList((currList) => {
             return currList.filter((_task) => _task.id !== task.id)
@@ -32,17 +37,10 @@ export const Task = ({ task, changeList, columns }) => {
         })
     }
     const handleOnDropdownChange = (columnId) => {
-        changeList((currList) => {
-            return currList.map((_task) => {
-                if(_task.id === task.id) {
-                    return {..._task, columnId}
-                }
-                return _task
-            })
-        })
+        changeTaskColumnId(task, columnId)
     }
     return (
-        <Container>
+        <Container ref={dragRef}>
             <TaskInput  type="text" onChange={handleTaskChange} value={task.name} disabled={!task.isEditing}/>
             <Button onClick={handleDelete}>-</Button>
             <ActionButton onClick={handleOnEdit}>{!task.isEditing ? "Edit" : "Save"}</ActionButton>
