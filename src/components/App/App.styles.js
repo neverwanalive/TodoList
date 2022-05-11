@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 
-import background from '../../assets/background.jpg'
-
 export const Container = styled.div`
-    background-image: url(${background});
-    margin: -8px;
+    background-size: cover;
+    background-position: center;
+    background-image: url(${({ background }) => background});
     padding: 0 50px;
 `

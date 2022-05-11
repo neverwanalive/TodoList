@@ -10,7 +10,7 @@ export const Title = styled.div`
     font-size: 30px;
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
-    color: #4b4b4b; 
+    color: black; 
     text-align: center;
 `
 

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
 
-import { Main, InputColumn, Columns, Title } from "./Todo.styles";
+import { Main, InputColumn, Columns, Title, Container } from "./Todo.styles";
 import { Column } from "../Column/Column";
 import { Input } from "../Input/Input";
-
+import { Sidebar } from "../Sidebar/Sidebar";
 
 export const Todo = () => {
     const [columns, updateColumns] = useState([])
@@ -61,10 +61,13 @@ export const Todo = () => {
     }
     return ( 
         <Main>
+            <Container>
             <InputColumn>
                 <Title>Add Column</Title>
                 <Input handleAdd={handleAddColumn}/>
             </InputColumn>
+            <Sidebar/>
+            </Container>
             <Columns>
                 {columns.map((column) => 
                     <Column

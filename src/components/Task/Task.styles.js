@@ -5,8 +5,8 @@ import { InputBlock, Button } from '../Input/Input.styles'
 export const Container = styled.div` 
     font-weight: 100;
     font-size: 20px;
-    width: 248px;
-    height: 28px;
+    width: 250px;
+    height: 40px;
     margin-top: 10px;
     padding: 7px 7px;
     border-radius: 3px;
