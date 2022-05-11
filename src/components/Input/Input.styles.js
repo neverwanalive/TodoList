@@ -37,4 +37,7 @@ export const Button = styled.button`
     color: white;
     background-color: #4B4B4B;
     cursor: pointer;
+    &:hover {
+        opacity: 90%;
+    }
 `

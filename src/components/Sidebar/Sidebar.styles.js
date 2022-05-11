@@ -9,7 +9,7 @@ export const MenuButton = styled.button`
     cursor: pointer;
     position: absolute;
     &:hover {
-        opacity: 70%;
+        opacity: 90%;
     }
     margin-top: 50px;
 `
@@ -21,7 +21,7 @@ export const ChangeBackgroundButton = styled.label`
     border-radius: 3px;
     cursor: pointer;
     &:hover {
-        opacity: 70%;
+        opacity: 90%;
     }
 `
 

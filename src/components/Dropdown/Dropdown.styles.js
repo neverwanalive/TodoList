@@ -40,4 +40,3 @@ export const ItemBlock = styled.div`
     :last-child {border-radius: 0px 0px 3px 3px};
     padding: 5px 0px;
 `
-
